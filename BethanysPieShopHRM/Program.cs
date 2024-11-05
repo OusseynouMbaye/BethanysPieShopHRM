@@ -1,7 +1,16 @@
 using BethanysPieShopHRM.Components;
+using Serilog;
 
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .WriteTo.Console()
+    .WriteTo.File("logs/bethanyShopLog.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
+try { 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddSerilog();
 // Add services to the container.
 builder.Services.AddRazorComponents();
 
@@ -23,3 +32,12 @@ app.UseAntiforgery();
 app.MapRazorComponents<App>();
 
 app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Host terminated unexpectedly");
+}
+finally
+{
+    Log.CloseAndFlush();
+}
