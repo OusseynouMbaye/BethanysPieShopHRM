@@ -1,4 +1,5 @@
 ﻿@page "/employeeoverview"
+
 @attribute [StreamRendering(true)]
 
 <h3>EmployeeOverview</h3>
@@ -25,12 +26,12 @@ else
         {
             <tr>
                 <td>
-                    <img src="@($"https://gillcleerenpluralsight.blob.core.windows.net/person/{employee.EmployeeId}.jpg")" class="img-fluid rounded-circle employee-detail-img" />
+                    <img src="@($"https://gillcleerenpluralsight.blob.core.windows.net/person/{employee.EmployeeId}.jpg")" class="img-fluid rounded-circle employee-detail-img w-25" />
                 </td>
                 <td>@employee.EmployeeId</td>
                 <td>@employee.FirstName</td>
                 <td>@employee.LastName</td>
-                <td><a>Details</a></td>
+                    <td><a href="@($"employeedetail/{employee.EmployeeId}")" class="btn btn-outline-primary btn-sm mb-1">Details</a></td>
             </tr>
         }
     </tbody>
