@@ -7,31 +7,34 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.File("logs/bethanyShopLog.txt", rollingInterval: RollingInterval.Day)
     .CreateLogger();
 
-try { 
-var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddSerilog();
-// Add services to the container.
-builder.Services.AddRazorComponents();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+try
 {
-    app.UseExceptionHandler("/Error", createScopeForErrors: true);
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
+    var builder = WebApplication.CreateBuilder(args);
 
-app.UseHttpsRedirection();
+    builder.Services.AddSerilog();
+    // Add services to the container.
+    builder.Services.AddRazorComponents()
+        .AddInteractiveServerComponents();
 
-app.UseStaticFiles();
-app.UseAntiforgery();
+    var app = builder.Build();
 
-app.MapRazorComponents<App>();
+    // Configure the HTTP request pipeline.
+    if (!app.Environment.IsDevelopment())
+    {
+        app.UseExceptionHandler("/Error", createScopeForErrors: true);
+        // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+        app.UseHsts();
+    }
 
-app.Run();
+    app.UseHttpsRedirection();
+
+    app.UseStaticFiles();
+    app.UseAntiforgery();
+
+    app.MapRazorComponents<App>()
+        .AddInteractiveServerRenderMode();
+
+    app.Run();
 }
 catch (Exception ex)
 {
