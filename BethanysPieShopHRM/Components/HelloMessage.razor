@@ -1,0 +1,19 @@
+﻿
+@* <h3>@Name</h3> *@
+
+@* <button @onclick="OnChangeName">Change Name</button> *@
+<button @onclick="ChangeName">Change Name</button>
+
+@code {
+    [Parameter]
+    public string Name { get; set; } = string.Empty;
+
+    [Parameter]
+    public EventCallback<string> NameChanged { get; set; }
+
+    private async Task ChangeName()
+    {
+        var newName = "Hello"; // Nouveau nom
+        await NameChanged.InvokeAsync(newName); // Notifie le parent
+    }
+}

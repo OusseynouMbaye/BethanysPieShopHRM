@@ -1,8 +1,22 @@
 ﻿@page "/"
 
+@rendermode InteractiveServer
 <PageTitle>Home</PageTitle>
 
 <h1>Bethany's Pie Shop HRM</h1>
 
 <h2>Welcome</h2>
 <br/>
+
+<HelloMessage Name="@Name" NameChanged="UpdateName" />
+
+<p>Nom actuel : @Name</p>
+
+@code {
+    private string Name = "Ouzinem"; // Nom initial
+
+    private void UpdateName(string newName)
+    {
+        Name = newName; // Met à jour le nom
+    }
+}
