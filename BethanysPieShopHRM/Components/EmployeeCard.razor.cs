@@ -11,5 +11,10 @@ namespace BethanysPieShopHRM.Components
         [Parameter]
         public EventCallback<Employee> EmployeeQuickViewClicked { get; set; }
 
+        private async Task ShowQuickViewClicked()
+        {
+            await EmployeeQuickViewClicked.InvokeAsync(Employee);
+        }   
+
     }
 }
