@@ -16,5 +16,12 @@ namespace BethanysPieShopHRM.Components
             await EmployeeQuickViewClicked.InvokeAsync(Employee);
         }   
 
+        protected override void OnInitialized()
+        {
+            if (string.IsNullOrEmpty(Employee.LastName))
+            {
+                throw new ArgumentNullException($"Last name of {Employee.FirstName} can't be empty" );
+            }
+        }
     }
 }
