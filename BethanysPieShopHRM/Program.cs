@@ -1,5 +1,9 @@
+using BethanysPieShopHRM;
 using BethanysPieShopHRM.Components;
+using BethanysPieShopHRM.Contracts.Repositories;
+using BethanysPieShopHRM.Contracts.Services;
 using BethanysPieShopHRM.Data;
+using BethanysPieShopHRM.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -20,6 +24,9 @@ try
 
     builder.Services.AddDbContextFactory<AppDbContext>(options =>
         options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"])); //GetConnectionString("DefaultConnection"))
+
+    builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+    builder.Services.AddScoped<IEmployeeDataService, EmployeeDataService>();
 
     var app = builder.Build();
 
