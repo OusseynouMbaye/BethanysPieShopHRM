@@ -4,6 +4,7 @@ using BethanysPieShopHRM.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BethanysPieShopHRM.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250228130009_DataAddedForCOuntry")]
+    partial class DataAddedForCOuntry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -160,30 +163,6 @@ namespace BethanysPieShopHRM.Migrations
                     b.HasIndex("JobCategoryId");
 
                     b.ToTable("Employees");
-
-                    b.HasData(
-                        new
-                        {
-                            EmployeeId = 1,
-                            BirthDate = new DateTime(1979, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            City = "Brussels",
-                            Comment = "Lorem Ipsum",
-                            CountryId = 1,
-                            Email = "bethany@bethanyspieshop.com",
-                            FirstName = "Bethany",
-                            Gender = 1,
-                            IsOnHoliday = false,
-                            JobCategoryId = 1,
-                            JoinedDate = new DateTime(2015, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastName = "Smith",
-                            Latitude = 50.850299999999997,
-                            Longitude = 4.3517000000000001,
-                            MaritalStatus = 1,
-                            PhoneNumber = "324777888773",
-                            Smoker = false,
-                            Street = "Grote Markt 1",
-                            Zip = "1000"
-                        });
                 });
 
             modelBuilder.Entity("BethanysPieShopHRM.Shared.Domain.JobCategory", b =>
@@ -201,53 +180,6 @@ namespace BethanysPieShopHRM.Migrations
                     b.HasKey("JobCategoryId");
 
                     b.ToTable("JobCategories");
-
-                    b.HasData(
-                        new
-                        {
-                            JobCategoryId = 1,
-                            JobCategoryName = "Pie research"
-                        },
-                        new
-                        {
-                            JobCategoryId = 2,
-                            JobCategoryName = "Sales"
-                        },
-                        new
-                        {
-                            JobCategoryId = 3,
-                            JobCategoryName = "Management"
-                        },
-                        new
-                        {
-                            JobCategoryId = 4,
-                            JobCategoryName = "Store staff"
-                        },
-                        new
-                        {
-                            JobCategoryId = 5,
-                            JobCategoryName = "Finance"
-                        },
-                        new
-                        {
-                            JobCategoryId = 6,
-                            JobCategoryName = "QA"
-                        },
-                        new
-                        {
-                            JobCategoryId = 7,
-                            JobCategoryName = "IT"
-                        },
-                        new
-                        {
-                            JobCategoryId = 8,
-                            JobCategoryName = "Cleaning"
-                        },
-                        new
-                        {
-                            JobCategoryId = 9,
-                            JobCategoryName = "Bakery"
-                        });
                 });
 
             modelBuilder.Entity("BethanysPieShopHRM.Shared.Domain.Employee", b =>
