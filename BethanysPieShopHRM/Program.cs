@@ -1,9 +1,9 @@
-using BethanysPieShopHRM;
 using BethanysPieShopHRM.Components;
 using BethanysPieShopHRM.Contracts.Repositories;
 using BethanysPieShopHRM.Contracts.Services;
 using BethanysPieShopHRM.Data;
 using BethanysPieShopHRM.Repositories;
+using BethanysPieShopHRM.Services;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
