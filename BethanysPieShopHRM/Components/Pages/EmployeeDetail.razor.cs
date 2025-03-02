@@ -1,3 +1,4 @@
+using BethanysPieShopHRM.Contracts.Services;
 using BethanysPieShopHRM.Services;
 using BethanysPieShopHRM.Shared.Domain;
 using Microsoft.AspNetCore.Components;
@@ -10,12 +11,12 @@ namespace BethanysPieShopHRM.Components.Pages
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; } = new Employee();
 
-        protected override void OnInitialized()
-        {
-            Task.Delay(2000);
-          
-                Employee = MockDataService.Employees.Single(e => e.EmployeeId == EmployeeId);
-            
+        [Inject]
+        public IEmployeeDataService? EmployeeDataService { get; set; }
+
+        protected override async void OnInitialized()
+        { 
+                Employee = await EmployeeDataService!.GetEmployeeDetails(EmployeeId);
         }
 
         private void ChangeHolidayState()
