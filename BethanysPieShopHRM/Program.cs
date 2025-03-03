@@ -27,7 +27,10 @@ try
         options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"])); //GetConnectionString("DefaultConnection"))
 
     builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+    builder.Services.AddScoped<ITimeRegistrationRepository, TimeRegistrationRepository>();
+
     builder.Services.AddScoped<IEmployeeDataService, EmployeeDataService>();
+    builder.Services.AddScoped<ITimeRegistrationDataService, TimeRegistrationDataService>();
     builder.Services.AddScoped<ApplicationState>();
 
     var app = builder.Build();
