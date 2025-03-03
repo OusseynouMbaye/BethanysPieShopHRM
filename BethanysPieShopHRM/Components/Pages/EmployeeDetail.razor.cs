@@ -10,13 +10,17 @@ namespace BethanysPieShopHRM.Components.Pages
         [Parameter]
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; } = new Employee();
+        public List<TimeRegistration> TimeRegistrations { get; set; } = [];
 
         [Inject]
         public IEmployeeDataService? EmployeeDataService { get; set; }
 
-        protected override async void OnInitialized()
-        { 
-                Employee = await EmployeeDataService!.GetEmployeeDetails(EmployeeId);
+        [Inject]
+        public ITimeRegistrationDataService? TimeRegistrationDataService { get; set; }
+        protected async override Task OnInitializedAsync()
+        {
+            Employee = await EmployeeDataService!.GetEmployeeDetails(EmployeeId);
+            TimeRegistrations = await TimeRegistrationDataService!.GetTimeRegistrationsForEmployee(EmployeeId);
         }
 
         private void ChangeHolidayState()

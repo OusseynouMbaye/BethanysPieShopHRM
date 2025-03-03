@@ -138,6 +138,37 @@
             </div>
         </div>
     </div>
+    <h2>Time registrations</h2>
+    @if (TimeRegistrations.Count == 0)
+    {
+        <p><em>Loading time registrations...</em></p>
+    }
+    else
+    {
+        <div class="virtualized">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Start time</th>
+                        <th>End time</th>
+                        <th>Task</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in TimeRegistrations)
+                    {
+                        <tr>
+                            <td>@item.TimeRegistrationId</td>
+                            <td>@item.StartTime</td>
+                            <td>@item.EndTime</td>
+                            <td>@item.PerformedTaskDescription</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
 
 
 </section>
