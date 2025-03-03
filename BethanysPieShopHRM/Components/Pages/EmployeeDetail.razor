@@ -156,19 +156,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in TimeRegistrations)
-                    {
+                    <Virtualize Items="TimeRegistrations" Context="context">
                         <tr>
-                            <td>@item.TimeRegistrationId</td>
-                            <td>@item.StartTime</td>
-                            <td>@item.EndTime</td>
-                            <td>@item.PerformedTaskDescription</td>
+                            <td>@context.TimeRegistrationId</td>
+                            <td>@context.StartTime</td>
+                            <td>@context.EndTime</td>
+                            <td>@context.PerformedTaskDescription</td>
                         </tr>
-                    }
+
+                    </Virtualize>
                 </tbody>
             </table>
         </div>
     }
+
 
 
 </section>
